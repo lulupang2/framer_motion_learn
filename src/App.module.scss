@@ -1,0 +1,17 @@
+.Home {
+  max-width: 80em;
+  max-height: 45em;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  border: 2px solid salmon;
+  border-radius: 1rem;
+  min-height: 640px;
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  flex-wrap: wrap;
+  overflow: visible;
+  position: relative;
+  z-index: 0;
+}
