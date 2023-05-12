@@ -1,10 +1,9 @@
+import { motion } from "framer-motion";
 import React from "react";
 import styles from "./Animation.module.scss";
-import { motion } from "framer-motion";
 export default function Animation1() {
   const [transX, setTransX] = React.useState(0);
   const [transY, setTransY] = React.useState(0);
-  const [scale, setScale] = React.useState(1);
   const [rotate, setRotate] = React.useState(0);
 
   const onChange = (

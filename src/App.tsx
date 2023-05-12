@@ -1,10 +1,6 @@
 import styles from "App.module.scss";
-import { useState } from "react";
-import Animation1, {
-  Animation1_Tumbnail,
-} from "./example/Animation/Animation1";
-import useHover from "./hooks/useHover";
 import Card from "./components/Card";
+import { Animation1_Tumbnail } from "./example/Animation/Animation1";
 function App() {
   // const [isOpen, setIsOpen] = useState(false);
 
