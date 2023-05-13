@@ -28,7 +28,7 @@ export default function Animation1() {
       </div>
       <div>
         <div>
-          {transX}
+          X {transX}
           <input
             type="range"
             value={transX}
@@ -38,7 +38,7 @@ export default function Animation1() {
           />
         </div>
         <div>
-          {transY}
+          Y {transY}
           <input
             type="range"
             min={-50}
@@ -48,7 +48,7 @@ export default function Animation1() {
           />
         </div>
         <div>
-          {rotate}
+          rotate {rotate}
           <input
             type="range"
             min={-360}

@@ -1,25 +1,16 @@
-import styles from "App.module.scss";
-import Card from "./components/Card";
-import { Animation1_Tumbnail } from "./example/Animation/Animation1";
-function App() {
-  // const [isOpen, setIsOpen] = useState(false);
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./Home";
+import Animation1 from "./example/Animation/Animation1";
 
+function App() {
   return (
-    <>
-      <main className={styles.Home}>
-        {/* <Card label="Card 1" />
-        <Card label="Card 2" />
-        <Card label="Card 3" /> */}
-        {/* <Animation1 /> */}
-        {Array(6)
-          .fill(0)
-          .map((_, i) => (
-            <Card label={`Card ${i}`} key={i}>
-              <Animation1_Tumbnail />
-            </Card>
-          ))}
-      </main>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/example/:exampleId" element={<Home />} />
+        <Route path="/test" element={<Animation1 />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

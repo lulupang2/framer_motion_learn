@@ -1,47 +1,32 @@
-import { motion } from "framer-motion";
-
-export function Modal({
-  isOpen,
-  onClose,
-  children,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-  children: JSX.Element;
-}) {
-  const backdropVariants = {
-    visible: { opacity: 1 },
-    hidden: { opacity: 0 },
+import { AnimatePresence, motion, useScroll } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+interface IProps {
+  exampleId: string;
+  children: React.ReactNode;
+}
+export function Modal({ exampleId, children }: IProps) {
+  const { scrollY } = useScroll();
+  const navigate = useNavigate();
+  const onOverlayClick = () => {
+    navigate("/");
   };
-
-  const modalVariants = {
-    visible: { opacity: 1, y: 0 },
-    hidden: { opacity: 0, y: "-100%" },
-  };
-
   return (
     <>
-      {isOpen && (
+      <AnimatePresence>
         <motion.div
-          className="backdrop"
-          variants={backdropVariants}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          onClick={onClose}
-        >
-          <motion.div
-            className="modal"
-            variants={modalVariants}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {children}
-          </motion.div>
-        </motion.div>
-      )}
+          className="Modal-Overlay"
+          onClick={onOverlayClick}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        ></motion.div>
+      </AnimatePresence>
+      <motion.div
+        className="Modal-Wrapper"
+        layoutId={exampleId}
+        style={{ top: scrollY.get() }}
+      >
+        {children}
+      </motion.div>
     </>
   );
 }

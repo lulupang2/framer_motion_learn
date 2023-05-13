@@ -24,6 +24,8 @@ body {
 }
 
 .MotionWrapper {
+  width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   place-items: center;
@@ -55,4 +57,26 @@ input[type="range"] {
 }
 .Card {
   @include card(#fff, #000);
+}
+//Modal
+.Modal {
+  &-Overlay {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000080;
+  }
+  &-Wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    width: 40%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-color: #ffffff;
+  }
 }
