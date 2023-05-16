@@ -1,42 +1,53 @@
-import { motion, useScroll } from "framer-motion";
+import { motion, useCycle, useScroll } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 interface IProps {
   exampleId: string;
   children: React.ReactNode;
 }
 
+const sidebar = {
+  open: {
+    scale: [0, 1.2],
+    transition: {
+      stiffness: 50,
+      type: "spring",
+    },
+  },
+  closed: {
+    scale: 0,
+    transition: {
+      stiffness: 400,
+      damping: 40,
+      type: "spring",
+    },
+  },
+};
+
 export function Modal({ exampleId, children }: IProps) {
   const { scrollY } = useScroll();
+  const [isOpen, modalOpen] = useCycle(false, true);
   const navigate = useNavigate();
   const onOverlayClick = () => {
-    navigate("/");
-  };
-  const sidebar = {
-    open: (height = 720) => ({
-      clipPath: `circle(${height * 2 + 200}px at 50% 50%)`,
-      transition: {
-        type: "spring",
-        stiffness: 20,
-        restDelta: 12,
-      },
-      transform: "translate(-50%, -50%)",
-      top: "50%",
-      left: "50%",
-    }),
+    modalOpen();
+    setTimeout(() => {
+      navigate("/");
+    }, 400);
   };
   return (
     <>
       <motion.div
         className="Modal-Overlay"
         onClick={onOverlayClick}
-        animate={exampleId ? "open" : "closed"}
-        transition={{ duration: 1.5 }}
+        animate={isOpen ? "closed" : "open"}
         variants={sidebar}
       ></motion.div>
       <motion.div
+        animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+        transition={{ stiffness: 2 }}
         className="Modal-Wrapper"
         layoutId={exampleId}
         style={{ top: scrollY.get() }}
+        onTap={() => modalOpen()}
       >
         {children}
       </motion.div>
