@@ -7,7 +7,7 @@ import { useMatch, useNavigate } from "react-router-dom";
 import { Modal } from "./components/Modal";
 export default function Home() {
   const navigate = useNavigate();
-  const uriMatch = useMatch("/example/:exampleId");
+  const urlMatch = useMatch("/example/:exampleId");
   const onClick = (exampleId: number) => {
     navigate(`/example/${exampleId}`);
   };
@@ -24,8 +24,8 @@ export default function Home() {
             <Animation1_Tumbnail />
           </Card>
         ))}
-      {uriMatch ? (
-        <Modal exampleId={uriMatch.params.exampleId || ""}>
+      {urlMatch ? (
+        <Modal exampleId={urlMatch.params.exampleId || ""}>
           <Animation1 />
         </Modal>
       ) : null}
