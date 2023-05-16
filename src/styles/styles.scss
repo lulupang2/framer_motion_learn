@@ -65,7 +65,7 @@ input[type="range"] {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: #00000080;
+    background-color: #ffffff;
   }
   &-Wrapper {
     display: flex;
@@ -78,5 +78,6 @@ input[type="range"] {
     right: 0;
     margin: 0 auto;
     background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   }
 }
