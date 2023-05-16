@@ -1,5 +1,4 @@
-import { AnimatePresence, motion, useScroll } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 interface IProps {
   exampleId: string;
